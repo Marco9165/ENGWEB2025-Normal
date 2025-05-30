@@ -1,0 +1,42 @@
+extends layout
+
+block content
+  .w3-container.w3-margin
+    h2 País: #{pais.nome}
+    
+    h3 Participações
+    
+    table.w3-table.w3-striped.w3-bordered.w3-hoverable
+      thead
+        tr.w3-light-grey
+          th ID da Edição
+          th Ano
+          th Nome da Música
+          th Intérprete
+          th Venceu?
+      tbody
+        each participacao in pais.participacoes
+          tr
+            td
+              a(href=`/${participacao.id}`)= participacao.id
+            td= participacao.ano
+            td= participacao.musica
+            td= participacao.interprete
+            td= participacao.venceu ? 'Sim' : 'Não'
+    
+    h3 Edições Organizadas
+    
+    table.w3-table.w3-striped.w3-bordered.w3-hoverable
+      thead
+        tr.w3-light-grey
+          th ID da Edição
+          th Ano
+      tbody
+        each edicao in pais.organizadas
+          tr
+            td
+              a(href=`/${edicao.id}`)= edicao.id
+            td= edicao.ano
+    
+    .w3-container.w3-margin-top
+      a.w3-button.w3-teal(href='/') Voltar à Página Principal

@@ -1,0 +1,26 @@
+extends layout
+
+block content
+  .w3-container.w3-margin
+    h2 Lista de Edições do Festival Eurovisão
+    
+    table.w3-table.w3-striped.w3-bordered.w3-hoverable
+      thead
+        tr.w3-light-grey
+          th ID da Edição
+          th Ano da Edição
+          th País Organizador
+          th País Vencedor
+      tbody
+        each edicao in edicoes
+          tr
+            td
+              a(href=`/${edicao.id}`)= edicao.id
+            td= edicao.ano_edicao
+            td
+              a(href=`/paises/${edicao.organizacao}`)= edicao.organizacao
+            td
+              if edicao.vencedor
+                a(href=`/paises/${edicao.vencedor}`)= edicao.vencedor
+              else
+                | -
